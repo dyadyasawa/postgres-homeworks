@@ -42,19 +42,19 @@ try:
 
         with conn.cursor() as curs:
 
-            with open('employees_data.csv', newline='', encoding='utf-8') as f:
+            with open('north_data/employees_data.csv', newline='', encoding='utf-8') as f:
                 reader = DictReader(f)
                 for row in reader:
                     result_tuple = (int(row['employee_id']), row['first_name'], row['last_name'], row['title'], string_to_date(row['birth_date']), row['notes'])
                     curs.execute('INSERT INTO employees VALUES (%s, %s, %s, %s, %s, %s)', result_tuple)
 
-            with open('customers_data.csv', newline='', encoding='utf-8') as f:
+            with open('north_data/customers_data.csv', newline='', encoding='utf-8') as f:
                 reader = DictReader(f)
                 for row in reader:
                     result_tuple = (row['customer_id'], row['company_name'], row['contact_name'])
                     curs.execute('INSERT INTO customers VALUES (%s, %s, %s)', result_tuple)
 
-            with open('orders_data.csv', newline='', encoding='utf-8') as f:
+            with open('north_data/orders_data.csv', newline='', encoding='utf-8') as f:
                 reader = DictReader(f)
                 for row in reader:
                     result_tuple = (int(row['order_id']), row['customer_id'], int(row['employee_id']), string_to_date(row['order_date']), row['ship_city'])
