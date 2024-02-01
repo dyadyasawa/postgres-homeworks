@@ -32,6 +32,7 @@ postgres=# \l
 import os
 import psycopg2
 from csv import DictReader
+from utils import string_to_date
 
 password = os.getenv('PASSWORD_FOR_DB') # Пароль для базы данных. Находится в переменной окружения.
 
