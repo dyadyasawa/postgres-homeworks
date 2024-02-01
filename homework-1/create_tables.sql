@@ -2,25 +2,25 @@
 CREATE TABLE employees
 (
 	employee_id int PRIMARY KEY
-	first_name varchar(100) NOTNULL
-	last_name varchar(100) NOTNULL
-	title varchar(100) NOTNULL
-	birth_data date
+	first_name varchar(100) NOT NULL
+	last_name varchar(100) NOT NULL
+	title varchar(100) NOT NULL
+	birth_data date NOT NULL
 	notes text
 );
 
 CREATE TABLE customers
 (
 	customer_id varchar(5) PRIMARY KEY
-	company_name varchar(100) NOTNULL
-	contact_name varchar(100) NOTNULL
+	company_name varchar(100) NOT NULL
+	contact_name varchar(100) NOT NULL
 );
 
 CREATE TABLE orders
 (
 	order_id int PRIMARY KEY
-	customer_id varchar(5) NOTNULL
-	employee_id int NOTNULL
-	order_date date NOTNULL
-	ship_city varchar(100) NOTNULL
+	client varchar(5) REFERENCES customers(customer_id) NOT NULL
+	executor int REFERENCES employees(employee_id) NOT NULL
+	order_date date NOT NULL
+	ship_city varchar(100) NOT NULL
 );
