@@ -13,4 +13,7 @@ SELECT product_name INTO new_table FROM products WHERE discontinued = 1;
 ALTER TABLE order_details DROP CONSTRAINT fk_order_details_products;
 
 DELETE FROM products WHERE discontinued = 1;
-ALTER TABLE order_details ADD CONSTRAINT fk_order_details_products FOREIGN KEY (unit_price) REFERENCES products(unit_price);
+
+DELETE FROM order_details WHERE product_id NOT IN (SELECT product_id FROM products);
+
+ALTER TABLE order_details ADD CONSTRAINT fk_order_details_products FOREIGN KEY (product_id) REFERENCES products(product_id);
